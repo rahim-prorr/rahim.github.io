@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Наш персонал - Магазин "Комфорт"</title>
+</head>
+<body>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="main.html">Персонал</a></li>
+            <li><a href="abaut.html">О нас</a></li>
+            <li><a href="delivery.html">Доставка</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <section class="staff-hero">
+            <h1>Наша команда</h1>
+            <p>Профессионалы, которые помогут создать уют в вашем доме</p>
+        </section>
+
+        <section class="staff-grid">
+            <div class="staff-card">
+                <div class="staff-photo">
+                    <img src="./curer.jpg" >
+                </div>
+                <div class="staff-info">
+                    <h3>Аушев Ислам</h3>
+                    <img src="./" alt="">
+                    <p class="staff-position">Лучший курьер!</p>
+                    <p class="staff-experience">Опыт работы: 12 лет</p>
+                    <p class="staff-description">Лучший курьер же есть, соберу любую мебель же есть!</p>
+                    <div class="staff-contacts">
+                        <span>📞 +7 (123) 456-78-91</span>
+                        <span>✉️ islam@comfort.ru</span>
+                    </div>
+                </div>
+            </div>
+
+
+<div class="staff-card">
+    <div class="staff-photo">
+        <img src="./donald.jpg" >
+    </div>
+    <div class="staff-info">
+        <h3>Дональд Трамп</h3>
+        <p class="staff-position">Главный спонсор</p>
+        <p class="staff-experience">Сотрудничество: 8 лет</p>
+        <p class="staff-description">Make American Great Agene!</p>
+        <div class="staff-contacts">
+            <span>📞 +7 (123) 456-78-92</span>
+            <span>✉️ tramp@comfort.usa</span>
+        </div>
+    </div>
+</div>
+
+<div class="staff-card">
+    <div class="staff-photo">
+        <img src="./download.jpg" alt="Дизайнер интерьеров">
+    </div>
+    <div class="staff-info">
+        <h3>Дженсен Эклс</h3>
+        <p class="staff-position">Дизайнер интерьеров</p>
+        <p class="staff-experience">Опыт работы: 10 лет</p>
+        <p class="staff-description">Создам 3D-визуализацию вашего помещения с новой мебелью</p>
+        <div class="staff-contacts">
+            <span>📞 +7 (123) 456-78-93</span>
+            <span>✉️ supernatural@comfort.ru</span>
+        </div>
+    </div>
+</div>
+
+<div class="staff-card">
+    <div class="staff-photo">
+        <img src="./karl.jpg" alt="Технический специалист">
+    </div>
+    <div class="staff-info">
+        <h3>Карл Урбан</h3>
+        <p class="staff-position">Технический специалист</p>
+        <p class="staff-experience">Опыт работы: 6 лет</p>
+        <p class="staff-description">Проведу точные замеры и проконсультирую по установке</p>
+        <div class="staff-contacts">
+            <span>📞 +7 (123) 456-78-94</span>
+        </div>
+    </div>
+</div>
+
+
+        <section class="consultation-request">
+            <h2>Заказать консультацию</h2>
+            <p>Выберите специалиста и получите профессиональную консультацию</p>
+            
+            <form class="consult-form" id="staff-consult-form">
+                <select name="specialist" required>
+                    <option value="">Выберите специалиста!</option>
+                    <option value="anna">Аушев Ислам (Курьер)</option>
+                    <option value="mikhail">Дональд Трамп (Главный спонсор)</option>
+                    <option value="elena">Дженсен Эклс (Дизайнер)</option>
+                    <option value="alexey">Карл Урбан (Технический Специалист)</option>
+                </select>
+                
+                <input type="text" name="name" placeholder="Ваше имя" required>
+                <input type="tel" name="phone" placeholder="Телефон" required>
+                <textarea name="message" placeholder="Опишите ваш вопрос или проект"></textarea>
+                
+                <button type="submit">Заказать консультацию</button>
+            </form>
+        </section>
+    </main>
+
+</body>
+</html>

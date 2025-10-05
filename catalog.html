@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./app.js">
+    <title>Мебельный магазин "Комфорт"</title>
+    <style>
+
+        
+        
+        .main-nav ul li:nth-child(2) a:hover {
+            color: #ff5252;
+            transform: translateY(-2px);
+        }
+        
+        .main-nav ul li:nth-child(2) a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ff5252;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+        
+        .main-nav ul li:nth-child(2) a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+       
+        .main-nav ul li:nth-child(2) a:active {
+            transform: translateY(1px);
+            color: #e04141;
+        }
+        
+        .main-nav ul li:nth-child(2) a:active::after {
+            background-color: #e04141;
+            transform: scaleX(0.8);
+        }
+        
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+      
+        .info-section {
+            background-color: #f9f9f9;
+            padding: 50px 0;
+            margin: 40px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .info-title {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .info-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .info-card {
+            flex: 1 1 300px;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-card h3 {
+            color: #ff5252;
+            margin-bottom: 15px;
+        }
+
+        .info-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    
+    <header class="main-header">
+        <div class="logo-container">
+            <h1>Магазин мебели <span>"Комфорт"</span></h1>
+        </div>
+        <div class="header-contacts">
+            <p>+7 (123) 456-78-90</p>
+            <p>г. Москва, ул. Мебельная, 15</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="main.html">Персонал</a></li>
+            <li><a href="abaut.html">О нас</a></li>
+            <li><a href="delivery.html">Доставка</a></li>
+        </ul>
+    </nav>
+    
+    <main class="main-content">
+        <section class="hero-banner">
+            <div class="hero-text">
+                <h2>Создайте уют в вашем доме</h2>
+                <p>Мебель премиум-класса по доступным ценам</p>
+                <div class="hero-buttons">
+                    <a href="catalog.html" class="cta-button">В каталог</a>
+                    <a href="#footer" class="secondary-button">Вниз</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <div class="info-container">
+                <h2 class="info-title">Почему выбирают нашу мебель</h2>
+                <div class="info-content">
+                    <div class="info-card">
+                        <h3>Экологичные материалы</h3>
+                        <p>Мы используем только сертифицированные материалы, безопасные для здоровья вашей семьи. Все изделия проходят строгий контроль качества.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Индивидуальный подход</h3>
+                        <p>Наши дизайнеры помогут создать мебель по вашим эскизам и размерам. Реализуем любые ваши идеи!</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Гарантия 5 лет</h3>
+                        <p>Даем расширенную гарантию на всю продукцию. Ваш комфорт - наша ответственность.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="features">
+          
+        </section>
+        
+        <section class="categories">
+           
+        </section>
+        
+        <section class="special-offer">
+           
+        </section>
+    </main>
+    
+    <footer class="main-footer" id="footer">
+      
+    </footer>
+    
+    <script src="./app.js"></script>
+
+</body>
+</html>

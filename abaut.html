@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>О нас - Мебельный магазин "Комфорт"</title>
+    <style>
+        /* Цветовая схема */
+        :root {
+            --green-primary: #2ecc71;
+            --green-dark: #27ae60;
+            --green-light: #58d68d;
+            --yellow-primary: #f1c40f;
+            --yellow-dark: #f39c12;
+            --yellow-light: #f7dc6f;
+            --red-primary: #e74c3c;
+            --red-dark: #c0392b;
+            --red-light: #ec7063;
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --gray-medium: #e9ecef;
+            --gray-dark: #343a40;
+            --text-dark: #2c3e50;
+        }
+
+        /* Общие стили */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--white);
+        }
+
+        /* Шапка */
+        .main-header {
+            background: linear-gradient(135deg, var(--green-primary) 0%, var(--green-dark) 100%);
+            color: var(--white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+        }
+
+        .logo-container h1 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+
+        .logo-container span {
+            color: var(--yellow-primary);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .header-contacts p {
+            margin: 5px 0;
+            text-align: right;
+            font-weight: 500;
+        }
+
+        /* Навигация */
+        .main-nav {
+            background: var(--green-dark);
+            padding: 0;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .main-nav li {
+            flex: 1;
+            text-align: center;
+        }
+
+        .main-nav a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 1rem 0;
+            display: block;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .main-nav a:hover {
+            background: var(--yellow-primary);
+            color: var(--text-dark);
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--yellow-primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .main-nav a:hover::after {
+            width: 80%;
+        }
+
+        /* Основной контент */
+        .main-content {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+            font-size: 2.5em;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--green-primary), var(--yellow-primary), var(--red-primary));
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        /* Секция "О нас" */
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            align-items: start;
+        }
+
+        .about-text h3 {
+            color: var(--green-dark);
+            margin-top: 2rem;
+            font-size: 1.5em;
+        }
+
+        .about-text h3:first-child {
+            margin-top: 0;
+        }
+
+        .advantages-list {
+            margin: 1.5rem 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .advantages-list li {
+            margin-bottom: 1rem;
+            padding: 0.8rem 1rem 0.8rem 3rem;
+            background: var(--gray-light);
+            border-radius: 8px;
+            position: relative;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--green-primary);
+        }
+
+        .advantages-list li:hover {
+            transform: translateX(10px);
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .advantages-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--green-primary);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+        }
+
+        /* Команда */
+        .team-section {
+            margin-top: 4rem;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, var(--gray-light) 0%, var(--white) 100%);
+            border-radius: 20px;
+        }
+
+        .team-section h3 {
+            text-align: center;
+            color: var(--text-dark);
+            font-size: 2em;
+            margin-bottom: 2rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .team-member {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--green-primary), var(--yellow-primary), var(--red-primary));
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 4px solid;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:nth-child(1) img {
+            border-color: var(--green-primary);
+        }
+        .team-member:nth-child(2) img {
+            border-color: var(--yellow-primary);
+        }
+        .team-member:nth-child(3) img {
+            border-color: var(--red-primary);
+        }
+
+        .team-member h4 {
+            color: var(--text-dark);
+            margin: 1rem 0 0.5rem;
+            font-size: 1.3em;
+        }
+
+        .team-member p {
+            color: var(--green-dark);
+            font-weight: 500;
+            margin: 0;
+            padding: 0.3rem 1rem;
+            background: var(--gray-light);
+            border-radius: 15px;
+            display: inline-block;
+        }
+
+        /* Статистика */
+        .stats-section {
+            background: linear-gradient(135deg, var(--green-primary) 0%, var(--yellow-primary) 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .stat-text {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        /* Футер */
+        .main-footer {
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--text-dark) 100%);
+            color: var(--white);
+            padding: 3rem 2rem 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section h3 {
+            color: var(--yellow-primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 2rem;
+            padding-top: 1rem;
+            text-align: center;
+            color: var(--gray-medium);
+        }
+
+        /* Анимации */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .about-section {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .team-section {
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .stats-section {
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+            }
+
+            .main-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .header-contacts p {
+                text-align: center;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-content {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <header class="main-header">
+        <div class="logo-container">
+            <h1>Магазин мебели <span>"Комфорт"</span></h1>
+        </div>
+        <div class="header-contacts">
+            <p>+7 (123) 456-78-90</p>
+            <p>г. Москва, ул. Мебельная, 15</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="main.html">Персонал</a></li>
+            <li><a href="abaut.html">О нас</a></li>
+            <li><a href="delivery.html">Доставка</a></li>
+        </ul>
+    </nav>
+    
+    <main class="main-content">
+        <section class="about-section">
+            <h2 class="section-title">О нашей компании</h2>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Мебельный магазин "Комфорт" работает на рынке с 2010 года. Мы предлагаем качественную мебель по доступным ценам, помогая создавать уют в вашем доме.</p>
+                    
+                    <h3>Наша миссия</h3>
+                    <p>Сделать качественную мебель доступной для каждого, сочетая современный дизайн, надежность и комфорт.</p>
+                    
+                    <h3>Наши преимущества</h3>
+                    <ul class="advantages-list">
+                        <li>Собственное производство в России</li>
+                        <li>Использование экологичных материалов</li>
+                        <li>Более 10 000 довольных клиентов</li>
+                        <li>Профессиональные дизайнеры в штате</li>
+                        <li>Гарантия на всю продукцию 5 лет</li>
+                        <li>Бесплатная доставка по Москве</li>
+                        <li>Рассрочка 0% на 12 месяцев</li>
+                    </ul>
+                </div>
+                
+                <div class="about-image">
+                    <img src="./logo.jpg" alt="Наш магазин">
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-text">лет на рынке</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">10K+</span>
+                        <span class="stat-text">довольных клиентов</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-text">моделей мебели</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-text">поддержка клиентов</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-section">
+                <h3>Наша команда</h3>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="./director.jpg" alt="Директор">
+                        <h4>Павел Дуров</h4>
+                        <p>Директор, основатель компании</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="./designer.jpg" alt="Дизайнер">
+                        <h4>Петрова Мария</h4>
+                        <p>Главный дизайнер</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="./ilon.jpg" alt="Менеджер">
+                        <h4>Илон Маск</h4>
+                        <p>Менеджер по продажам</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>Магазин "Комфорт"</h3>
+                <p>Мы создаем уют в вашем доме с 2010 года</p>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p>г. Москва, ул. Мебельная, 15</p>
+                <p>+7 (928) 918-41-28</p>
+                <p>www513102@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Часы работы</h3>
+                <p>Пн-Пт: 9:00 - 20:00</p>
+                <p>Сб-Вс: 10:00 - 18:00</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Мебельный магазин "Комфорт" | Все права защищены</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+
+            const animatedElements = document.querySelectorAll('.team-member, .stat-item, .advantages-list li');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

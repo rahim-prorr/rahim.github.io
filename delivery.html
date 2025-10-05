@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доставка и оплата | Магазин мебели "Комфорт"</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --green-primary: #2ecc71;
+            --green-dark: #27ae60;
+            --green-light: #58d68d;
+            --yellow-primary: #f1c40f;
+            --yellow-dark: #f39c12;
+            --yellow-light: #f7dc6f;
+            --red-primary: #e74c3c;
+            --red-dark: #c0392b;
+            --red-light: #ec7063;
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --gray-medium: #e9ecef;
+            --gray-dark: #343a40;
+            --text-dark: #2c3e50;
+        }
+
+        .delivery-section {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            border-top: 5px solid;
+            border-image: linear-gradient(90deg, var(--green-primary), var(--yellow-primary), var(--red-primary)) 1;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+            font-size: 2.5em;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--green-primary), var(--yellow-primary), var(--red-primary));
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+        
+        .delivery-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .method-card {
+            background: var(--white);
+            border: 2px solid var(--gray-medium);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .method-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--green-primary), var(--yellow-primary), var(--red-primary));
+        }
+        
+        .method-card:hover {
+            border-color: var(--green-primary);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(46, 204, 113, 0.2);
+        }
+        
+        .method-card h3 {
+            color: var(--text-dark);
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .method-card p {
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .method-card strong {
+            color: var(--green-dark);
+        }
+
+        /* Цветовые акценты для разных методов доставки */
+        .method-card:nth-child(1) h3 { color: var(--green-dark); }
+        .method-card:nth-child(2) h3 { color: var(--yellow-dark); }
+        .method-card:nth-child(3) h3 { color: var(--red-dark); }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .payment-method {
+            background: linear-gradient(135deg, var(--green-light), var(--yellow-light));
+            color: var(--text-dark);
+            padding: 1rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .payment-method:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-color: var(--green-primary);
+        }
+        
+        .payment-method:before {
+            content: "✓";
+            color: var(--green-dark);
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .delivery-map {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--gray-light), var(--white));
+            margin-top: 2rem;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--green-light);
+            position: relative;
+        }
+
+        .delivery-map::before {
+            content: 'Карта зоны доставки';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--green-dark);
+            font-size: 1.2em;
+            font-weight: bold;
+            z-index: 1;
+        }
+        
+        .faq-container {
+            margin-top: 3rem;
+        }
+        
+        .faq-item {
+            margin-bottom: 1rem;
+            border: 2px solid var(--gray-medium);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--green-primary);
+        }
+        
+        .faq-question {
+            background: linear-gradient(135deg, var(--gray-light), var(--white));
+            padding: 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            color: var(--text-dark);
+        }
+        
+        .faq-question:hover {
+            background: linear-gradient(135deg, var(--green-light), var(--yellow-light));
+        }
+        
+        .faq-question:after {
+            content: "+";
+            font-size: 1.8rem;
+            color: var(--green-dark);
+            font-weight: normal;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question.active:after {
+            content: "-";
+            color: var(--red-primary);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            background: var(--white);
+        }
+        
+        .faq-question.active + .faq-answer {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+        
+        .delivery-terms {
+            margin-top: 3rem;
+            background: linear-gradient(135deg, var(--green-light), var(--yellow-light));
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 6px solid var(--red-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .delivery-terms::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.1) 10px,
+                rgba(255,255,255,0.1) 20px
+            );
+            animation: shine 3s linear infinite;
+        }
+        
+        .delivery-terms h3 {
+            margin-top: 0;
+            color: var(--text-dark);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .terms-list {
+            padding-left: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .terms-list li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .terms-list li::before {
+            content: '•';
+            color: var(--red-primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        /* Анимации */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delivery-section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .method-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .method-card:nth-child(1) { animation-delay: 0.1s; }
+        .method-card:nth-child(2) { animation-delay: 0.2s; }
+        .method-card:nth-child(3) { animation-delay: 0.3s; }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .delivery-section {
+                padding: 2rem 1rem;
+            }
+            
+            .delivery-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <header class="main-header">
+        <div class="logo-container">
+            <h1>Магазин мебели <span>"Комфорт"</span></h1>
+        </div>
+        <div class="header-contacts">
+            <p>+7 (123) 456-78-90</p>
+            <p>г. Москва, ул. Мебельная, 15</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="main.html">Персонал</a></li>
+            <li><a href="abaut.html">О нас</a></li>
+            <li><a href="delivery.html" class="active">Доставка</a></li>
+        </ul>
+    </nav>
+    
+
+    <main class="main-content">
+        <section class="delivery-section">
+            <h2 class="section-title">Доставка и оплата</h2>
+            <p>Мы предлагаем удобные способы доставки и оплаты для вашего комфорта. Все заказы упаковываются с особой тщательностью для сохранности при транспортировке.</p>
+            
+            <div class="delivery-methods">
+                <div class="method-card">
+                    <h3>🚛 Курьерская доставка</h3>
+                    <p>Быстрая доставка по Москве в течение 1-3 дней. Наши курьеры аккуратно доставят ваш заказ до двери и помогут с размещением.</p>
+                    <p><strong>Стоимость:</strong> 500 руб. в пределах МКАД</p>
+                    <p><strong>За МКАД:</strong> +30 руб./км</p>
+                    <p><strong>Время доставки:</strong> с 9:00 до 21:00</p>
+                </div>
+                
+                <div class="method-card">
+                    <h3>🏪 Самовывоз</h3>
+                    <p>Вы можете забрать заказ самостоятельно с нашего склада по адресу: г. Москва, ул. Мебельная, 15</p>
+                    <p><strong>Стоимость:</strong> бесплатно</p>
+                    <p><strong>Часы работы:</strong> Пн-Пт: 9:00-20:00, Сб-Вс: 10:00-18:00</p>
+                    <p><strong>Парковка:</strong> бесплатная на территории склада</p>
+                </div>
+                
+                <div class="method-card">
+                    <h3>📦 Доставка в регионы</h3>
+                    <p>Доставка транспортной компанией по всей России. Сроки и стоимость рассчитываются индивидуально.</p>
+                    <p><strong>Популярные компании:</strong> СДЭК, Деловые Линии, ПЭК</p>
+                    <p><strong>Сроки:</strong> от 2 до 14 дней в зависимости от региона</p>
+                    <p><strong>Страховка:</strong> включена в стоимость</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="delivery-section">
+            <h2 class="section-title">Способы оплаты</h2>
+            <p>Вы можете оплатить заказ удобным для вас способом. Мы принимаем все основные формы оплаты:</p>
+            
+            <div class="payment-methods">
+                <span class="payment-method">Наличные курьеру</span>
+                <span class="payment-method">Банковская карта (Visa, Mastercard, Мир)</span>
+                <span class="payment-method">Онлайн-оплата на сайте</span>
+                <span class="payment-method">Безналичный расчет для юр. лиц</span>
+                <span class="payment-method">Рассрочка 0% на 6 месяцев</span>
+                <span class="payment-method">Кредит от банков-партнеров</span>
+            </div>
+            
+            <div class="delivery-terms">
+                <h3>Условия оплаты</h3>
+                <ul class="terms-list">
+                    <li>Предоплата 30% при заказе мебели на изготовление</li>
+                    <li>Полная оплата при получении для товаров в наличии</li>
+                    <li>Возможен возврат в течение 14 дней</li>
+                    <li>Все платежи защищены SSL-шифрованием</li>
+                </ul>
+            </div>
+        </section>
+        
+<section class="delivery-section">
+    <h2 class="section-title">Зона доставки</h2>
+    <p>Мы осуществляем доставку по всей Москве и Московской области. Карта зоны бесплатной доставки:</p>
+    
+    <div class="delivery-map-container">
+        <img src="./Снимок экрана (18).png" alt="Карта зоны доставки по Москве и Московской области" class="delivery-map-image">
+        <div class="map-overlay">
+            <div class="map-legend">
+                <div class="legend-item">
+                    <span class="legend-color" style="background: var(--green-primary);"></span>
+                    <span>Бесплатная доставка</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background: var(--yellow-primary);"></span>
+                    <span>Доставка 500 руб.</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background: var(--red-primary);"></span>
+                    <span>Индивидуальный расчет</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <section class="delivery-section">
+            <h2 class="section-title">Частые вопросы</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">Какой срок доставки по Москве?</div>
+                    <div class="faq-answer">
+                        Доставка по Москве осуществляется в течение 1-3 рабочих дней. Точную дату доставки согласует с вами наш менеджер после оформления заказа.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Можно ли оплатить заказ при получении?</div>
+                    <div class="faq-answer">
+                        Да, вы можете оплатить заказ наличными или банковской картой при получении. Для товаров под заказ требуется предоплата 30%.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Есть ли сборка мебели?</div>
+                    <div class="faq-answer">
+                        Да, мы предлагаем услугу сборки мебели. Стоимость сборки зависит от сложности мебели и составляет от 10% от стоимости заказа.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>Магазин "Комфорт"</h3>
+                <p>Мы создаем уют в вашем доме с 2010 года</p>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p>г. Москва, ул. Мебельная, 15</p>
+                <p>+7 (928) 918-41-28</p>
+                <p>www513102@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Часы работы</h3>
+                <p>Пн-Пт: 9:00 - 20:00</p>
+                <p>Сб-Вс: 10:00 - 18:00</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Мебельный магазин "Комфорт" | Все права защищены</p>
+        </div>
+    </footer>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+
+                    faqQuestions.forEach(q => {
+                        if (q !== question) {
+                            q.classList.remove('active');
+                            q.nextElementSibling.style.maxHeight = '0';
+                            q.nextElementSibling.style.padding = '0 1.5rem';
+                        }
+                    });
+                    
+
+                    this.classList.toggle('active');
+                    const answer = this.nextElementSibling;
+                    
+                    if (this.classList.contains('active')) {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        answer.style.padding = '1.5rem';
+                    } else {
+                        answer.style.maxHeight = '0';
+                        answer.style.padding = '0 1.5rem';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>        
